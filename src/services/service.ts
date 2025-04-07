@@ -1,12 +1,15 @@
 export class ArrayService {
   getUniqueElements(arr1: string[], arr2: string[]): string[] {
-    const set1 = new Set(arr1);
-    const set2 = new Set(arr2);
+    const unique1 = Array.from(new Set(arr1));
+    const unique2 = Array.from(new Set(arr2));
 
-    const unique1 = arr1.filter((item) => !set2.has(item));
-    const unique2 = arr2.filter((item) => !set1.has(item));
+    const set1 = new Set(unique1);
+    const set2 = new Set(unique2);
 
-    return [...unique1, ...unique2];
+    const un1 = unique1.filter((item) => !set2.has(item));
+    const un2 = unique2.filter((item) => !set1.has(item));
+
+    return [...un1, ...un2];
   }
 }
 
